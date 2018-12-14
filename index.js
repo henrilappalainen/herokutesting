@@ -3,8 +3,6 @@ const app = express()
 const bodyParser = require('body-parser')
 const cors = require('cors')
 
-app.use(cors())
-
 const logger = (request, response, next) => {
     console.log('Method:',request.method)
     console.log('Path:  ', request.path)
@@ -16,6 +14,10 @@ const logger = (request, response, next) => {
 const error = (request, response) => {
     response.status(404).send({error: 'unknown endpoint'})
 }
+
+app.use(express.static('build'))
+
+app.use(cors())
 
 app.use(bodyParser.json())
 
