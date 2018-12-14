@@ -45,14 +45,14 @@ let notes = [
 ]
 
 app.get('/', (req, res) => {
-    res.send('<h1>Hello World!</h1>')
+    res.send('Notes backend')
 })
 
-app.get('/notes', (req, res) => {
+app.get('/api/notes', (req, res) => {
     res.json(notes)
 })
 
-app.get('/notes/:id', (req, res) => {
+app.get('/api/notes/:id', (req, res) => {
     const id = Number(req.params.id)
     const note = notes.find( note => {
         return note.id === id
@@ -69,7 +69,7 @@ const generateId = () => {
     return maxId + 1
   }
   
-app.post('/notes', (request, response) => {
+app.post('/api/notes', (request, response) => {
     const body = request.body
   
     if (body.content === undefined) {
@@ -88,7 +88,7 @@ app.post('/notes', (request, response) => {
     response.json(note)
 })
 
-app.delete('/notes/:id', (req, res) => {
+app.delete('/api/notes/:id', (req, res) => {
     const id = Number(req.params.id)
     notes = notes.filter(note => note.id !== id)
     
