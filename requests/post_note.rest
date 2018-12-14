@@ -1,0 +1,8 @@
+POST http://localhost:3001/notes
+content-type: application/json
+
+{
+    "content": "VS Coden Rest Client on pars",
+    "important": true,
+    "date": "123"
+}
